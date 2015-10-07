@@ -59,7 +59,7 @@ This means that each cell needs to store its knocked down walls. We will be solv
 
 ## Cell Data Structure
 
-We will be using the maze data structure described by [MazeWorks](https://web.archive.org/web/20150306191401/http://www.mazeworks.com/mazegen/mazetut/index.htm) and partially implemented [http://forums.tigsource.com/index.php?topic=4589.0](http://forums.tigsource.com/index.php?topic=4589.0). To summarize, each cell is represented by 16-bits.
+We will be using the maze data structure described by [MazeWorks](https://web.archive.org/web/20150306191401/http://www.mazeworks.com/mazegen/mazetut/index.htm) and partially implemented [here](http://forums.tigsource.com/index.php?topic=4589.0). To summarize, each cell is represented by 16-bits.
 
 1. The left-most set of 4-bits store the backtrack path
 2. The next set of 4-bits store the solution path
