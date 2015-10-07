@@ -70,6 +70,8 @@ We'll need two new bitwise operators to do this:
 1. The compliment operator (`~` in Python) -- this flips all the bits. Zeros become ones and ones become zeros. `~0b1010` evaluates to `0b0101`. We'll use this to invert `SOLUTION_BITS`.
 2. The left bit shift operator (`<<` in Python) -- this moves all the bits over. `0b1111 << 8` evaluates to `0b111100000000`. We'll use this to shift values from `WALLS` and `OPPOSITE_WALLS` to the right position for updating solution bits and backtrack bits respectively.
 
+Take some time to play around with `~` and `<<` in the Python interpreter.
+
 > [action]
 >
 > Complete the implementation of `visit_cell`. It should clear the solution bits out of `from_cell`, update solution bits in `from_cell` using `WALLS[compass_index]`, update the backtrack bits in `to_cell` using `OPPOSITE_WALLS[compass_index]`. Leave the call to `draw_connect_cells` or else the maze visualization will not be updated!
