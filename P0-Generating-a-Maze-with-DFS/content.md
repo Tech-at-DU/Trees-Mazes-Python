@@ -75,7 +75,7 @@ The top-left cell of the above image can be represented as `0b0000010010010110`.
 3. 1001 for maze borders to the west and the north
 4. 0110 for knocked down walls to the south and the east
 
-<!-- TODO: ![Cell bits data structure](cell_data_structure.png "Cell bits data structure") -->
+![Cell bits data structure](cell_structure.png "Cell bits data structure")
 
 Storing cells as 16-bits will allow us to use [bit manipulation](https://en.wikipedia.org/wiki/Bit_manipulation) to modify and retrieve data! The maze itself is stored as a list of 16-bit numbers.
 
