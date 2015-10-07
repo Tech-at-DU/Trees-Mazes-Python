@@ -24,16 +24,16 @@ First off, let's update `cell_neighbors`. `cell_neighbors` is supposed to use `s
 >
 > Complete the implementation of `cell_neighbors` so that it:
 >
->         creates empty list of neighbors
->         for each direction
->             calculate new cell from cell
->             if new cell in that direction is within the bounds of maze
->                 if state is create and all of new cell's walls are up
+>     creates empty list of neighbors
+>     for each direction
+>         calculate new cell from cell
+>         if new cell in that direction is within the bounds of maze
+>             if state is create and all of new cell's walls are up
+>                 add (new cell index, COMPASS index of direction) to neighbors
+>             if state is solve and no wall between cell and new cell
+>                 if new cell not on solution or backtrack path
 >                     add (new cell index, COMPASS index of direction) to neighbors
->                 if state is solve and no wall between cell and new cell
->                     if new cell not on solution or backtrack path
->                         add (new cell index, COMPASS index of direction) to neighbors
->         return neighbors
+>     return neighbors
 
 <!-- Make School -->
 
@@ -41,23 +41,23 @@ First off, let's update `cell_neighbors`. `cell_neighbors` is supposed to use `s
 >
 > The completed `cell_neighbors` method should look like this:
 >
->         def cell_neighbors(self, cell):
->             x, y = self.x_y(cell)
->             neighbors = []
->             for i in range(4):
->                 new_x = x + COMPASS[i][0]
->                 new_y = y + COMPASS[i][1]
->                 if self.cell_in_bounds(new_x, new_y):
->                     new_cell = self.cell_index(new_x, new_y)
->                     if self.state == 'create':
->                         if not (self.maze_array[new_cell] & WALL_BITS):
+>     def cell_neighbors(self, cell):
+>         x, y = self.x_y(cell)
+>         neighbors = []
+>         for i in range(4):
+>             new_x = x + COMPASS[i][0]
+>             new_y = y + COMPASS[i][1]
+>             if self.cell_in_bounds(new_x, new_y):
+>                 new_cell = self.cell_index(new_x, new_y)
+>                 if self.state == 'create':
+>                     if not (self.maze_array[new_cell] & WALL_BITS):
+>                         neighbors.append((new_cell, i))
+>                 elif self.state == 'solve':
+>                     if (self.maze_array[cell] & WALLS[i]):
+>                         if not (self.maze_array[new_cell] &
+>                                 (BACKTRACK_BITS | SOLUTION_BITS)):
 >                             neighbors.append((new_cell, i))
->                     elif self.state == 'solve':
->                         if (self.maze_array[cell] & WALLS[i]):
->                             if not (self.maze_array[new_cell] &
->                                     (BACKTRACK_BITS | SOLUTION_BITS)):
->                                 neighbors.append((new_cell, i))
->             return neighbors
+>         return neighbors
 >
 > `self.maze_array[cell] & WALL_BITS` will be zero if `cell` has a wall in the direction of `new_cell`. `(BACKTRACK_BITS | SOLUTION_BITS)` combines the two bit masks. That means that you can use `(self.maze_array[new_cell] & (BACKTRACK_BITS | SOLUTION_BITS))` to check if the cell contains any solution or backtrack path data.
 
@@ -80,11 +80,11 @@ We'll need two new bitwise operators to do this:
 >
 > The completed `visit_cell` method should looks like this:
 >
->         def visit_cell(self, from_cell, to_cell, compass_index):
->             self.maze_array[from_cell] &= ~SOLUTION_BITS
->             self.maze_array[from_cell] |= (WALLS[compass_index] << 8)
->             self.maze_array[to_cell] |= (OPPOSITE_WALLS[compass_index] << 12)
->             self.draw_visited_cell(from_cell)
+>     def visit_cell(self, from_cell, to_cell, compass_index):
+>         self.maze_array[from_cell] &= ~SOLUTION_BITS
+>         self.maze_array[from_cell] |= (WALLS[compass_index] << 8)
+>         self.maze_array[to_cell] |= (OPPOSITE_WALLS[compass_index] << 12)
+>         self.draw_visited_cell(from_cell)
 
 ## backtrack
 
@@ -100,9 +100,9 @@ We'll need two new bitwise operators to do this:
 >
 > The completed `backtrack` method should looks like this:
 >
->         def backtrack(self, cell):
->             self.maze_array[cell] &= ~SOLUTION_BITS
->             self.draw_backtracked_cell(cell)
+>     def backtrack(self, cell):
+>         self.maze_array[cell] &= ~SOLUTION_BITS
+>         self.draw_backtracked_cell(cell)
 
 # Solving with Depth First Search
 
@@ -153,9 +153,9 @@ If you did everything right, your DFS solver should look like this:
 >
 > The completed `bfs_visit_cell` method should looks like this:
 >
->         def bfs_visit_cell(self, cell, from_compass_index):
->             self.maze_array[cell] |= (OPPOSITE_WALLS[from_compass_index] << 12)
->             self.draw_bfs_visited_cell(from_cell)
+>     def bfs_visit_cell(self, cell, from_compass_index):
+>         self.maze_array[cell] |= (OPPOSITE_WALLS[from_compass_index] << 12)
+>         self.draw_bfs_visited_cell(from_cell)
 
 ## reconstruct_solution
 
@@ -165,13 +165,13 @@ If you did everything right, your DFS solver should look like this:
 >
 > Complete the implementation of `reconstruct_solution` using the following pseudocode:
 >
->         draw cell as part of solution path with draw_visited_cell
->         isolate the four backtrack bits to previous cell bits
->         set i to index of previous cell bits in WALLS
->         use i to calculate index of previous cell, set to previous cell
->         update solution bits of previous cell to point towards cell
->         call refresh_maze_view to update visualization
->         if previous cell not start cell, reconstruct_solution(previous cell)
+>     draw cell as part of solution path with draw_visited_cell
+>     isolate the four backtrack bits to previous cell bits
+>     set i to index of previous cell bits in WALLS
+>     use i to calculate index of previous cell, set to previous cell
+>     update solution bits of previous cell to point towards cell
+>     call refresh_maze_view to update visualization
+>     if previous cell not start cell, reconstruct_solution(previous cell)
 
 # Solving with Breadth First Search
 

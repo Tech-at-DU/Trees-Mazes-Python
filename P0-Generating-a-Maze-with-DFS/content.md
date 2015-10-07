@@ -111,13 +111,13 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > Complete the implementation of `cell_neighbors` so that it:
 >
->         creates empty list of neighbors
->         for each direction
->             calculate new cell from cell
->             if new cell in that direction is within the bounds of maze
->                 if state is create and all of new cell's walls are up
->                     add (new cell index, COMPASS index of direction) to neighbors
->         return neighbors
+>     creates empty list of neighbors
+>     for each direction
+>         calculate new cell from cell
+>         if new cell in that direction is within the bounds of maze
+>             if state is create and all of new cell's walls are up
+>                 add (new cell index, COMPASS index of direction) to neighbors
+>     return neighbors
 >
 > You can check if all walls are still up using a *bitwise AND* (`&` in Python). *Bitwise AND* compares the bits between two numbers -- each bit of the output is 1 if the corresponding bit of x and y is both 1, otherwise it is 0. Play around with `&` in the Python interpreter to get a feel for it.
 >
@@ -125,7 +125,7 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > Make sure to store the new cell index and compass index as a tuple. The returned list should look something like this:
 >
->         [(1, 0), (3, 3)]
+>     [(1, 0), (3, 3)]
 >
 > This represents two unvisited neighboring cells. The first is at cell index `1` and to the left (`COMPASS[0]`), the second is at cell index `3` and to the right (`COMPASS[3]`). These `COMPASS` indices will come in handy soon since the indices of `WALLS` and `OPPOSITE_WALLS` match up.
 
@@ -135,18 +135,18 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > The completed `cell_neighbors` method should look like this:
 >
->         def cell_neighbors(self, cell):
->             x, y = self.x_y(cell)
->             neighbors = []
->             for i in range(4):
->                 new_x = x + COMPASS[i][0]
->                 new_y = y + COMPASS[i][1]
->                 if self.cell_in_bounds(new_x, new_y):
->                     new_cell = self.cell_index(new_x, new_y)
->                     if self.state == 'create':
->                         if not (self.maze_array[new_cell] & WALL_BITS):
->                             neighbors.append((new_cell, i))
->             return neighbors
+>``     def cell_neighbors(self, cell):
+>         x, y = self.x_y(cell)
+>         neighbors = []
+>         for i in range(4):
+>             new_x = x + COMPASS[i][0]
+>             new_y = y + COMPASS[i][1]
+>             if self.cell_in_bounds(new_x, new_y):
+>                 new_cell = self.cell_index(new_x, new_y)
+>                 if self.state == 'create':
+>                     if not (self.maze_array[new_cell] & WALL_BITS):
+>                         neighbors.append((new_cell, i))
+>         return neighbors
 
 ## connect_cells
 
@@ -162,10 +162,10 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > The completed `connect_cells` method should looks like this:
 >
->         def connect_cells(self, from_cell, to_cell, compass_index):
->             self.maze_array[from_cell] |= WALLS[compass_index]
->             self.maze_array[to_cell] |= OPPOSITE_WALLS[compass_index]
->             self.draw_connect_cells(from_cell, compass_index)
+>     def connect_cells(self, from_cell, to_cell, compass_index):
+>         self.maze_array[from_cell] |= WALLS[compass_index]
+>         self.maze_array[to_cell] |= OPPOSITE_WALLS[compass_index]
+>         self.draw_connect_cells(from_cell, compass_index)
 
 <!-- Make School -->
 
