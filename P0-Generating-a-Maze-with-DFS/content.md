@@ -135,7 +135,7 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > The completed `cell_neighbors` method should look like this:
 >
->``     def cell_neighbors(self, cell):
+>     def cell_neighbors(self, cell):
 >         x, y = self.x_y(cell)
 >         neighbors = []
 >         for i in range(4):
