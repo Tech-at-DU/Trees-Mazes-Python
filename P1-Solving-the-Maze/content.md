@@ -229,12 +229,10 @@ If you did everything right, your BFS solver should look like this:
 
 ![Breadth first search solving maze](bfs_solve_maze.gif "Breath first search solving maze")
 
-<!-- # Where to Go From Here -->
+# Stretch Goals
 
-<!-- disclaimer -->
+If you're enjoying this and want to do more, here are some ideas:
 
-<!-- complete solution_array -->
-
-<!-- A* search -->
-
-<!-- save mazes to file / load from file -->
+- Complete `solution_array` method to return an array of cardinal directions (N, S, E, W) to get from start cell to goal cell
+- Implement [A* search](https://en.wikipedia.org/wiki/A*_search_algorithm), A* uses "heuristics" to intelligently decide which neighbor to explore next
+- Write methods to save mazes to file and load mazes from file, take advantage of the 16-bit cell data structure!
