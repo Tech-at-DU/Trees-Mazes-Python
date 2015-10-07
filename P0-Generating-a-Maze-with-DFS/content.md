@@ -160,7 +160,7 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 
 > [solution]
 >
-> The completed `connect_cells` method should looks like this:
+> The completed `connect_cells` method should look like this:
 >
 >     def connect_cells(self, from_cell, to_cell, compass_index):
 >         self.maze_array[from_cell] |= WALLS[compass_index]

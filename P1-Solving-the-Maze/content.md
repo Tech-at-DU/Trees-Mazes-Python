@@ -78,7 +78,7 @@ We'll need two new bitwise operators to do this:
 
 > [solution]
 >
-> The completed `visit_cell` method should looks like this:
+> The completed `visit_cell` method should look like this:
 >
 >     def visit_cell(self, from_cell, to_cell, compass_index):
 >         self.maze_array[from_cell] &= ~SOLUTION_BITS
@@ -98,7 +98,7 @@ We'll need two new bitwise operators to do this:
 
 > [solution]
 >
-> The completed `backtrack` method should looks like this:
+> The completed `backtrack` method should look like this:
 >
 >     def backtrack(self, cell):
 >         self.maze_array[cell] &= ~SOLUTION_BITS
@@ -151,7 +151,7 @@ If you did everything right, your DFS solver should look like this:
 
 > [solution]
 >
-> The completed `bfs_visit_cell` method should looks like this:
+> The completed `bfs_visit_cell` method should look like this:
 >
 >     def bfs_visit_cell(self, cell, from_compass_index):
 >         self.maze_array[cell] |= (OPPOSITE_WALLS[from_compass_index] << 12)
@@ -172,6 +172,28 @@ If you did everything right, your DFS solver should look like this:
 >     update solution bits of previous cell to point towards cell
 >     call refresh_maze_view to update visualization
 >     if previous cell not start cell, reconstruct_solution(previous cell)
+
+<!-- Make School -->
+
+> [solution]
+>
+> The completed `reconstruct_solution` method should look something like this:
+>
+>     def reconstruct_solution(self, cell):
+>         self.draw_visited_cell(cell)
+>         prev_cell_bits = (self.maze_array[cell] & BACKTRACK_BITS) >> 12
+>         try:
+>             i = WALLS.index(prev_cell_bits)
+>         except ValueError:
+>             print('ERROR - BACKTRACK BITS INVALID!')
+>         x, y = self.x_y(cell)
+>         prev_x = x + COMPASS[i][0]
+>         prev_y = y + COMPASS[i][1]
+>         prev_cell = self.cell_index(prev_x, prev_y)
+>         self.maze_array[prev_cell] |= (OPPOSITE_WALLS[i] << 8)
+>         self.refresh_maze_view()
+>         if prev_cell != 0:
+>             self.reconstruct_solution(prev_cell)
 
 # Solving with Breadth First Search
 
