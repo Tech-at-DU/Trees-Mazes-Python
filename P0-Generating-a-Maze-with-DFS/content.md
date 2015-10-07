@@ -97,6 +97,7 @@ Let's dive right into bit manipulation and finish up the methods that maze gener
 >
 > In Python, we can express a number using bits by starting it off with `0b`. The number is stored as an integer but we can see the binary representation using `bin(number)`. Play around with this notation in the Python interpreter until you get the hang of it.
 >
+>	$ python 3
 >       >>> x = 0b1011
 >       >>> x
 >       11
