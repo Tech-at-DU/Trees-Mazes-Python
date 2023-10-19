@@ -1,6 +1,8 @@
-# Trees-Mazes-Python
+# Trees and Mazes in Python
 
-Generate and solve mazes!
+_Generate and solve mazes!_
+
+<p align="center"><img src="https://github.com/Tech-at-DU/Trees-Mazes-Python/blob/master/cover.png?raw=true" width="800"/></p>
 
 ## Table of Contents
 
