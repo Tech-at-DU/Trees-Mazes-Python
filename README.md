@@ -2,7 +2,7 @@
 
 _Generate and solve mazes!_
 
-<p align="center"><img src="https://github.com/Tech-at-DU/Trees-Mazes-Python/blob/master/cover.png?raw=true" width="800"/></p>
+<p align="center"><img src="https://github.com/Tech-at-DU/Trees-Mazes-Python/blob/master/cover.png?raw=true" width="600"/></p>
 
 ## Table of Contents
 
