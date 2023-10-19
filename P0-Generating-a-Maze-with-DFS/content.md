@@ -15,9 +15,7 @@ Let's have some fun with trees! We'll use depth first search to generate a perfe
 
 > [action]
 >
-> 1. Go to the [assignment page](https://classroom.github.com/assignment-invitations/742a24d0861bd7d3b4a946784fa10f37)
-> 2. Accept the assignment and follow the link to the created repository
-> 3. Clone the repository and use it throughout this project
+> 1. Clone [this repository](https://github.com/Tech-at-DU/Trees-Mazes-Python-Starter and use it throughout this project
 
 This project makes use of `pygame` for visualization so you'll have to install a few dependancies before it'll run. Run the following command to install the `pygame` dependancies:
 
